@@ -6,19 +6,23 @@
             <i class="fas fa-users text-2xl"></i> Lista de Usuarios
         </h2>
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-            <a href="{{ route('usuarios.create') }}"
-                class="flex items-center gap-2 px-5 py-2 bg-[#1db954] text-black rounded-full font-bold border border-[#1db954] transition-all duration-300 shadow-md group hover:bg-[#121212] hover:text-[#1db954] hover:border-[#1db954] focus:outline-none focus:ring-2 focus:ring-[#1db954] focus:ring-offset-2">
-                <i class="fas fa-user-plus transition-transform duration-300  group-hover:text-[#1db954]"></i> Nuevo Usuario
-            </a>
-            <a href="{{ route('usuarios.reporte') }}"
-                class="flex items-center gap-2 px-5 py-2 bg-[#181818] text-[#1db954] rounded-full font-bold border border-[#1db954] transition-all duration-300 shadow-md group hover:bg-[#1db954] hover:text-black hover:border-[#1db954] focus:outline-none focus:ring-2 focus:ring-[#1db954] focus:ring-offset-2">
-                <i class="fas fa-file-pdf transition-transform duration-300  group-hover:text-black"></i> Generar Reporte
-            </a>
+            <div class="flex gap-2">
+                <a href="{{ route('usuarios.create') }}"
+                    class="flex items-center gap-2 px-5 py-2 bg-[#1db954] text-black rounded-full font-bold border border-[#1db954] transition-all duration-300 shadow-md group hover:bg-[#121212] hover:text-[#1db954] hover:border-[#1db954] focus:outline-none focus:ring-2 focus:ring-[#1db954] focus:ring-offset-2">
+                    <i class="fas fa-user-plus transition-transform duration-300 group-hover:text-[#1db954]"></i>
+                    Nuevo Usuario
+                </a>
+                <a href="{{ route('usuarios.reporte') }}" target="_blank"
+                    class="flex items-center gap-2 px-5 py-2 bg-[#181818] text-[#1db954] rounded-full font-bold border border-[#1db954] transition-all duration-300 shadow-md group hover:bg-[#1db954] hover:text-black hover:border-[#1db954] focus:outline-none focus:ring-2 focus:ring-[#1db954] focus:ring-offset-2">
+                    <i class="fas fa-file-pdf transition-transform duration-300 group-hover:text-black"></i>
+                    Generar Reporte
+                </a>
+            </div>
             <div class="flex items-center gap-2 relative w-full max-w-xs">
                 <span class="absolute left-3 top-1/2 -translate-y-1/2 text-[#1db954] pointer-events-none">
                     <i class="fas fa-search"></i>
                 </span>
-                <input type="text" id="searchUsuarios" placeholder="Buscar por nombre, email o rol..."
+                <input type="text" id="searchUsuarios" placeholder="Buscar por nombre..."
                     class="pl-10 pr-3 py-2 border border-[#1db954]/30 rounded bg-[#181818] text-white focus:outline-none focus:ring-2 focus:ring-[#1db954] focus:border-[#1db954] transition-all duration-300 w-full placeholder:italic placeholder:text-[#b3b3b3]"
                     onkeyup="filtrarUsuarios()">
                 <button type="button" onclick="document.getElementById('searchUsuarios').value=''; filtrarUsuarios();"

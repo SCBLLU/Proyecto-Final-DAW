@@ -75,7 +75,7 @@
         <p class="text-lg md:text-xl text-[#b3b3b3] max-w-2xl mx-auto mb-8">
             Vive la experiencia de una peluquería moderna con actitud urbana, cortes únicos y estilo auténtico.
         </p>
-        <a href="#" class="px-8 py-3 bg-[#1db954] text-black rounded-full font-bold hover:bg-[#1ed760] transition-all">
+        <a href="login" class="px-8 py-3 bg-[#1db954] text-black rounded-full font-bold hover:bg-[#1ed760] transition-all">
             Reserva tu cita
         </a>
     </section>
@@ -156,7 +156,7 @@
         <h2 class="text-2xl font-bold mb-4">¿Listo para tu nuevo look?</h2>
         <p class="text-[#b3b3b3] mb-6">Reserva tu cita hoy mismo o contáctanos por redes. ¡Te esperamos en Corte Urbano!
         </p>
-        <a href="#"
+        <a href="login"
             class="px-8 py-3 bg-[#1db954] text-black rounded-full font-bold hover:bg-[#1ed760] transition">Reservar
             ahora</a>
         <div class="flex justify-center gap-6 mt-6 text-xl">

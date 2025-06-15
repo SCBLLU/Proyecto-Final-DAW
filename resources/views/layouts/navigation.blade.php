@@ -20,8 +20,7 @@
                                 class="hover:text-[#1db954] transition">Citas</x-nav-link>
                             <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.*')"
                                 class="hover:text-[#1db954] transition">Clientes</x-nav-link>
-                            <x-nav-link :href="route('reportes.citas.pdf')" class="hover:text-[#1db954] transition">Reporte
-                                PDF</x-nav-link>
+
                         @elseif (auth()->user()->role === 'cliente')
                             <x-nav-link :href="route('cliente.dashboard')" :active="request()->routeIs('cliente.dashboard')"
                                 class="hover:text-[#1db954] transition">Mis Citas</x-nav-link>
