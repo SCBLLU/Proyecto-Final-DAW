@@ -1,31 +1,45 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="min-h-full">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
-<body class="font-sans antialiased min-h-screen bg-gradient-to-br from-[#1db954] via-[#191414] to-[#191414] dark:bg-[#191414]">
+
+<body class="bg-[#121212] text-white font-sans antialiased min-h-screen">
     <div class="min-h-screen">
         @include('layouts.navigation')
-        <!-- Page Heading -->
         @isset($header)
-            <header class="bg-[#191414]/80 dark:bg-[#191414] shadow border-b border-[#1db954]/20">
+            <header class="bg-[#191414]/80 shadow border-b border-[#1db954]/20">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     {{ $header }}
                 </div>
             </header>
         @endisset
-        <!-- Page Content -->
         <main>
             @yield('content')
         </main>
     </div>
+    <footer class="text-center py-6 text-[#6a6a6a] border-t border-[#2a2a2a] text-sm bg-[#121212]">
+        &copy; 2025 Corte Urbano. Todos los derechos reservados.
+    </footer>
 </body>
+
 </html>

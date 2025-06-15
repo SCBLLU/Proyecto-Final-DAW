@@ -1,30 +1,39 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="min-h-full">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ config('app.name', 'Laravel') }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+<body class="bg-[#121212] text-white font-sans antialiased min-h-screen">
+    <header
+        class="flex justify-between items-center px-6 py-5 border-b border-[#2a2a2a] bg-[#121212] sticky top-0 z-50">
+        <h1 class="text-2xl font-extrabold text-[#1db954]">Corte Urbano</h1>
+        <a href="/"
+            class="ml-4 px-5 py-2 bg-white text-black rounded-full font-semibold hover:bg-[#1db954] hover:text-white transition-colors">Inicio</a>
+    </header>
+    <div>
+        {{ $slot }}
+    </div>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased min-h-screen bg-gradient-to-br from-pink-200 via-orange-100 to-yellow-100 dark:bg-neutral-900">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-transparent">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-pink-500" />
-                </a>
-            </div>
+</body>
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white/80 dark:bg-neutral-900 shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
-            </div>
-        </div>
-    </body>
 </html>

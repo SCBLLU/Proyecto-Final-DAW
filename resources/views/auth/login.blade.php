@@ -1,39 +1,63 @@
 <x-guest-layout>
-    <div class="flex min-h-screen items-center justify-center bg-black py-12 px-4">
-        <div class="w-full max-w-md bg-black border border-white/10 rounded-xl shadow-none p-8">
-            <h2 class="text-3xl font-bold text-white mb-8 text-center">Iniciar sesión</h2>
-            <!-- Session Status -->
+    <div
+        class="flex min-h-screen items-center justify-center bg-gradient-to-br from-[#191414] via-[#121212] to-[#1db954]/10 py-12 px-4">
+        <div
+            class="w-full max-w-md bg-[#181818] border border-[#1db954]/20 rounded-2xl shadow-2xl p-10 relative overflow-hidden animate-fade-in">
+            <div class="flex justify-center mb-6">
+                <i class="fab fa-spotify text-4xl text-[#1db954]"></i>
+            </div>
+            <h2 class="text-3xl font-extrabold text-[#1db954] mb-8 text-center tracking-tight">Iniciar sesión</h2>
             <x-auth-session-status class="mb-4" :status="session('status')" />
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="{{ route('login') }}" class="space-y-6">
                 @csrf
-                <!-- Email Address -->
                 <div>
-                    <x-input-label for="email" :value="'Correo electrónico'" class="text-white/80" />
-                    <x-text-input id="email" class="block mt-1 w-full bg-black border border-white/20 text-white focus:border-white focus:ring-white" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-                    <x-input-error :messages="$errors->get('email')" class="mt-2 text-red-400" />
+                    <x-input-label for="email" :value="'Correo electrónico'" />
+                    <x-text-input id="email" class="mt-1" type="email" name="email" :value="old('email')" required
+                        autofocus autocomplete="username" />
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
-                <!-- Password -->
-                <div class="mt-4">
-                    <x-input-label for="password" :value="'Contraseña'" class="text-white/80" />
-                    <x-text-input id="password" class="block mt-1 w-full bg-black border border-white/20 text-white focus:border-white focus:ring-white" type="password" name="password" required autocomplete="current-password" />
-                    <x-input-error :messages="$errors->get('password')" class="mt-2 text-red-400" />
+                <div>
+                    <x-input-label for="password" :value="'Contraseña'" />
+                    <x-text-input id="password" class="mt-1" type="password" name="password" required
+                        autocomplete="current-password" />
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
-                <!-- Remember Me -->
-                <div class="block mt-4">
+                <div class="flex items-center justify-between">
                     <label for="remember_me" class="inline-flex items-center">
-                        <input id="remember_me" type="checkbox" class="rounded border-white/20 text-white bg-black shadow-none focus:ring-white" name="remember">
+                        <input id="remember_me" type="checkbox"
+                            class="rounded border-[#1db954]/30 text-[#1db954] bg-black shadow-none focus:ring-[#1db954]"
+                            name="remember">
                         <span class="ms-2 text-sm text-white/60">Recordarme</span>
                     </label>
-                </div>
-                <div class="flex items-center justify-between mt-6">
                     @if (Route::has('password.request'))
-                        <a class="underline text-sm text-white/60 hover:text-white transition" href="{{ route('password.request') }}">
+                        <a class="underline text-sm text-white/60 hover:text-[#1db954] transition"
+                            href="{{ route('password.request') }}">
                             ¿Olvidaste tu contraseña?
                         </a>
                     @endif
-                    <button type="submit" class="ms-3 px-6 py-2 bg-white text-black rounded-full font-semibold shadow-none border border-white/10 hover:bg-black hover:text-white hover:border-white transition">Entrar</button>
+                </div>
+                <div class="flex items-center justify-between mt-6">
+                    <a class="underline text-sm text-white/60 hover:text-[#1db954] transition"
+                        href="{{ route('register') }}">
+                        ¿No tienes cuenta?
+                    </a>
+                    <x-primary-button class="ms-3">Entrar</x-primary-button>
                 </div>
             </form>
         </div>
     </div>
+    <style>
+        .animate-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </x-guest-layout>

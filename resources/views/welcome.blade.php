@@ -61,7 +61,7 @@
             <a href="#faq" class="hover:text-[#1db954]">FAQ</a>
             <a href="#contacto" class="hover:text-[#1db954]">Contacto</a>
         </nav>
-        <a href="#"
+        <a href="login"
             class="ml-4 px-5 py-2 bg-white text-black rounded-full font-semibold hover:bg-[#1db954] hover:text-white transition-colors">
             Iniciar sesión
         </a>

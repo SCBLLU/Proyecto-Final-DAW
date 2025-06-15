@@ -1,38 +1,55 @@
 <x-guest-layout>
-    <div class="flex min-h-screen items-center justify-center bg-black py-12 px-4">
-        <div class="w-full max-w-md bg-black border border-white/10 rounded-xl shadow-none p-8">
-            <h2 class="text-2xl font-bold text-white mb-8 text-center">Restablecer contraseña</h2>
-            <form method="POST" action="{{ route('password.store') }}">
+    <div
+        class="flex min-h-screen items-center justify-center bg-gradient-to-br from-[#191414] via-[#121212] to-[#1db954]/10 py-12 px-4">
+        <div
+            class="w-full max-w-md bg-[#181818] border border-[#1db954]/20 rounded-2xl shadow-2xl p-10 relative overflow-hidden animate-fade-in">
+            <div class="flex justify-center mb-6">
+                <i class="fab fa-spotify text-4xl text-[#1db954]"></i>
+            </div>
+            <h2 class="text-2xl font-extrabold text-[#1db954] mb-8 text-center tracking-tight">Restablecer contraseña
+            </h2>
+            <form method="POST" action="{{ route('password.store') }}" class="space-y-6">
                 @csrf
-
-                <!-- Password Reset Token -->
                 <input type="hidden" name="token" value="{{ $request->route('token') }}">
-
-                <!-- Email Address -->
                 <div>
-                    <x-input-label for="email" :value="'Correo electrónico'" class="text-white/80" />
-                    <x-text-input id="email" class="block mt-1 w-full bg-black border border-white/20 text-white focus:border-white focus:ring-white" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
-                    <x-input-error :messages="$errors->get('email')" class="mt-2 text-red-400" />
+                    <x-input-label for="email" :value="'Correo electrónico'" />
+                    <x-text-input id="email" class="mt-1" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
-
-                <!-- Password -->
-                <div class="mt-4">
-                    <x-input-label for="password" :value="'Contraseña'" class="text-white/80" />
-                    <x-text-input id="password" class="block mt-1 w-full bg-black border border-white/20 text-white focus:border-white focus:ring-white" type="password" name="password" required autocomplete="new-password" />
-                    <x-input-error :messages="$errors->get('password')" class="mt-2 text-red-400" />
+                <div>
+                    <x-input-label for="password" :value="'Contraseña'" />
+                    <x-text-input id="password" class="mt-1" type="password" name="password" required
+                        autocomplete="new-password" />
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
-
-                <!-- Confirm Password -->
-                <div class="mt-4">
-                    <x-input-label for="password_confirmation" :value="'Confirmar contraseña'" class="text-white/80" />
-                    <x-text-input id="password_confirmation" class="block mt-1 w-full bg-black border border-white/20 text-white focus:border-white focus:ring-white" type="password" name="password_confirmation" required autocomplete="new-password" />
-                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-red-400" />
+                <div>
+                    <x-input-label for="password_confirmation" :value="'Confirmar contraseña'" />
+                    <x-text-input id="password_confirmation" class="mt-1" type="password" name="password_confirmation"
+                        required autocomplete="new-password" />
+                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                 </div>
-
-                <div class="flex items-center justify-end mt-6">
-                    <button type="submit" class="px-6 py-2 bg-white text-black rounded-full font-semibold shadow-none border border-white/10 hover:bg-black hover:text-white hover:border-white transition">Restablecer</button>
+                <div class="flex items-center justify-between mt-6">
+                    <a class="underline text-sm text-white/60 hover:text-[#1db954] transition"
+                        href="{{ route('login') }}">
+                        Volver a iniciar sesión
+                    </a>
+                    <x-primary-button>Restablecer</x-primary-button>
                 </div>
             </form>
         </div>
     </div>
+    <style>
+        .animate-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </x-guest-layout>
