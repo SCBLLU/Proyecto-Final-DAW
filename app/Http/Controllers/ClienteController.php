@@ -204,4 +204,11 @@ class ClienteController extends Controller
 
         return redirect()->route('cliente.dashboard')->with('success', 'Cita eliminada correctamente.');
     }
+    public function misCitas()
+    {
+        $citas = Cita::where('user_id', auth::id())
+            ->with('usuario')
+            ->get();
+        return view('cliente.dashboard', compact('citas'));
+    }
 }
