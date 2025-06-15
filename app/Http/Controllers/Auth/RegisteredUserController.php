@@ -27,28 +27,28 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-public function store(Request $request): RedirectResponse
-{
-    $request->validate([
-        'name' => ['required', 'string', 'max:255'],
-        'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-        'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        'role' => ['required', 'in:admin,cliente']
-    ]);
+    public function store(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'role' => ['required', 'in:admin,cliente']
+        ]);
 
-    $user = User::create([
-        'name' => $request->name,
-        'email' => $request->email,
-        'password' => Hash::make($request->password),
-        'role' => $request->role // Se asigna el rol elegido
-    ]);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => $request->role // Se asigna el rol elegido
+        ]);
 
-    event(new Registered($user));
-    Auth::login($user);
-    session(['usuario_id' => $user->id]);
+        event(new Registered($user));
+        Auth::login($user);
+        session(['usuario_id' => $user->id]);
 
 
-    // Redirigir al usuario según su rol
-    return redirect()->route($user->role === 'admin' ? 'admin.dashboard' : 'cliente.dashboard');
-}
+        // Redirigir al usuario según su rol
+        return redirect()->route($user->role === 'admin' ? 'admin.dashboard' : 'cliente.dashboard');
+    }
 }

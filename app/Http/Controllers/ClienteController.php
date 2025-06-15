@@ -32,8 +32,8 @@ class ClienteController extends Controller
     public function index()
     {
         $citas = Cita::where('user_id', auth::id())
-                    ->with('usuario')
-                    ->get();
+            ->with('usuario')
+            ->get();
 
         return view('cliente.dashboard', compact('citas'));
     }
@@ -69,10 +69,22 @@ class ClienteController extends Controller
         $horaActual = now()->format('H:i');
 
         $horarios_disponibles = [
-            '07:00 AM', '07:35 AM', '08:10 AM', '08:45 AM', 
-            '09:20 AM', '10:00 AM', '10:35 AM', '11:10 AM', 
-            '12:30 PM', '01:00 PM', '01:35 PM', '02:10 PM', 
-            '02:45 PM', '03:20 PM', '04:00 PM', '04:30 PM'
+            '07:00 AM',
+            '07:35 AM',
+            '08:10 AM',
+            '08:45 AM',
+            '09:20 AM',
+            '10:00 AM',
+            '10:35 AM',
+            '11:10 AM',
+            '12:30 PM',
+            '01:00 PM',
+            '01:35 PM',
+            '02:10 PM',
+            '02:45 PM',
+            '03:20 PM',
+            '04:00 PM',
+            '04:30 PM'
         ];
 
         $horarios_ocupados = Cita::whereDate('fecha', $fechaSeleccionada)->pluck('hora')->toArray();
@@ -98,16 +110,28 @@ class ClienteController extends Controller
         $horaActual = now()->format('H:i');
 
         $horarios_disponibles = [
-            '07:00 AM', '07:35 AM', '08:10 AM', '08:45 AM', 
-            '09:20 AM', '10:00 AM', '10:35 AM', '11:10 AM', 
-            '12:30 PM', '01:00 PM', '01:35 PM', '02:10 PM', 
-            '02:45 PM', '03:20 PM', '04:00 PM', '04:30 PM'
+            '07:00 AM',
+            '07:35 AM',
+            '08:10 AM',
+            '08:45 AM',
+            '09:20 AM',
+            '10:00 AM',
+            '10:35 AM',
+            '11:10 AM',
+            '12:30 PM',
+            '01:00 PM',
+            '01:35 PM',
+            '02:10 PM',
+            '02:45 PM',
+            '03:20 PM',
+            '04:00 PM',
+            '04:30 PM'
         ];
 
         $horarios_ocupados = Cita::whereDate('fecha', $fechaSeleccionada)
-                                ->where('id', '!=', $cita->id)
-                                ->pluck('hora')
-                                ->toArray();
+            ->where('id', '!=', $cita->id)
+            ->pluck('hora')
+            ->toArray();
 
         if ($fechaSeleccionada === now()->toDateString()) {
             $horarios_disponibles = array_filter($horarios_disponibles, function ($hora) use ($horaActual) {
@@ -140,7 +164,8 @@ class ClienteController extends Controller
         if (Cita::where('fecha', $request->fecha)
             ->where('hora', $request->hora)
             ->where('id', '!=', $cita->id)
-            ->exists()) {
+            ->exists()
+        ) {
             return back()->withErrors(['hora' => 'Este horario ya está ocupado.']);
         }
 
@@ -168,15 +193,15 @@ class ClienteController extends Controller
         return redirect()->route('cliente.citas')->with('success', 'Cita cancelada exitosamente.');
     }
     public function destroy($id)
-{
-    $cita = Cita::findOrFail($id);
+    {
+        $cita = Cita::findOrFail($id);
 
-    if ($cita->user_id !== auth::id()) {
-        abort(403, 'No autorizado.');
+        if ($cita->user_id !== auth::id()) {
+            abort(403, 'No autorizado.');
+        }
+
+        $cita->delete();
+
+        return redirect()->route('cliente.dashboard')->with('success', 'Cita eliminada correctamente.');
     }
-
-    $cita->delete();
-
-    return redirect()->route('cliente.dashboard')->with('success', 'Cita eliminada correctamente.');
-}
 }

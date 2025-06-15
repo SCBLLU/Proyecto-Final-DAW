@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Cita;
@@ -30,10 +31,22 @@ class AdminCitaController extends Controller
         $horaActual = now()->format('H:i');
 
         $horariosBase = [
-            '07:00 AM', '07:35 AM', '08:10 AM', '08:45 AM',
-            '09:20 AM', '10:00 AM', '10:35 AM', '11:10 AM',
-            '12:30 PM', '01:00 PM', '01:35 PM', '02:10 PM',
-            '02:45 PM', '03:20 PM', '04:00 PM', '04:30 PM'
+            '07:00 AM',
+            '07:35 AM',
+            '08:10 AM',
+            '08:45 AM',
+            '09:20 AM',
+            '10:00 AM',
+            '10:35 AM',
+            '11:10 AM',
+            '12:30 PM',
+            '01:00 PM',
+            '01:35 PM',
+            '02:10 PM',
+            '02:45 PM',
+            '03:20 PM',
+            '04:00 PM',
+            '04:30 PM'
         ];
 
         $horariosOcupados = Cita::whereDate('fecha', $fechaSeleccionada)->pluck('hora')->toArray();
@@ -44,14 +57,14 @@ class AdminCitaController extends Controller
 
         $horariosDisponibles = array_values(array_diff($horariosBase, $horariosOcupados));
         $opcionesCorteCabello = [
-    'Corte clásico',
-    'Corte degradado',
-    'Corte undercut',
-    'Corte pompadour',
-    'Corte con raya',
-    'Corte texturizado',
-    'Corte buzz',
-];
+            'Corte clásico',
+            'Corte degradado',
+            'Corte undercut',
+            'Corte pompadour',
+            'Corte con raya',
+            'Corte texturizado',
+            'Corte buzz',
+        ];
 
         return view('admin.citas.create', compact(
             'clientes',
@@ -96,10 +109,22 @@ class AdminCitaController extends Controller
         $horaActual = now()->format('H:i');
 
         $horariosBase = [
-            '07:00 AM', '07:35 AM', '08:10 AM', '08:45 AM',
-            '09:20 AM', '10:00 AM', '10:35 AM', '11:10 AM',
-            '12:30 PM', '01:00 PM', '01:35 PM', '02:10 PM',
-            '02:45 PM', '03:20 PM', '04:00 PM', '04:30 PM'
+            '07:00 AM',
+            '07:35 AM',
+            '08:10 AM',
+            '08:45 AM',
+            '09:20 AM',
+            '10:00 AM',
+            '10:35 AM',
+            '11:10 AM',
+            '12:30 PM',
+            '01:00 PM',
+            '01:35 PM',
+            '02:10 PM',
+            '02:45 PM',
+            '03:20 PM',
+            '04:00 PM',
+            '04:30 PM'
         ];
 
         $horariosOcupados = Cita::whereDate('fecha', $fechaSeleccionada)
@@ -113,14 +138,14 @@ class AdminCitaController extends Controller
 
         $horariosDisponibles = array_values(array_diff($horariosBase, $horariosOcupados));
         $opcionesCorteCabello = [
-    'Corte clásico',
-    'Corte degradado',
-    'Corte undercut',
-    'Corte pompadour',
-    'Corte con raya',
-    'Corte texturizado',
-    'Corte buzz',
-];
+            'Corte clásico',
+            'Corte degradado',
+            'Corte undercut',
+            'Corte pompadour',
+            'Corte con raya',
+            'Corte texturizado',
+            'Corte buzz',
+        ];
 
         return view('admin.citas.edit', compact(
             'cita',
@@ -146,7 +171,8 @@ class AdminCitaController extends Controller
         if (Cita::where('fecha', $request->fecha)
             ->where('hora', $request->hora)
             ->where('id', '!=', $cita->id)
-            ->exists()) {
+            ->exists()
+        ) {
             return back()->withErrors(['hora' => 'Ese horario ya está ocupado.'])->withInput();
         }
 
@@ -164,18 +190,18 @@ class AdminCitaController extends Controller
         return redirect()->route('admin.citas.index')->with('success', 'Cita actualizada exitosamente.');
     }
     public function marcarComoCompletada($id)
-{
-    $cita = Cita::findOrFail($id);
-    $cita->estado = 'completada';
-    $cita->save();
+    {
+        $cita = Cita::findOrFail($id);
+        $cita->estado = 'completada';
+        $cita->save();
 
-    return redirect()->route('admin.citas.index')->with('success', 'Cita marcada como completada.');
-}
-public function destroy($id)
-{
-    $cita = Cita::findOrFail($id);
-    $cita->delete();
+        return redirect()->route('admin.citas.index')->with('success', 'Cita marcada como completada.');
+    }
+    public function destroy($id)
+    {
+        $cita = Cita::findOrFail($id);
+        $cita->delete();
 
-    return redirect()->route('admin.citas.index')->with('success', 'Cita eliminada correctamente.');
-}
+        return redirect()->route('admin.citas.index')->with('success', 'Cita eliminada correctamente.');
+    }
 }
