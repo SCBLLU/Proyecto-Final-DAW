@@ -38,7 +38,7 @@
         </main>
     </div>
     <footer class="text-center py-6 text-[#6a6a6a] border-t border-[#2a2a2a] text-sm bg-[#121212]">
-        &copy; 2025 Corte Urbano. Todos los derechos reservados.
+        &copy; 2025 Barbershop. Todos los derechos reservados.
     </footer>
 </body>
 

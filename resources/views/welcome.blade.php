@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Corte Urbano</title>
+    <title>Barbershop</title>
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
@@ -54,7 +54,7 @@
     <!-- Header -->
     <header
         class="flex justify-between items-center px-6 py-5 border-b border-[#2a2a2a] bg-[#121212] sticky top-0 z-50">
-        <h1 class="text-2xl font-extrabold text-[#1db954]">Corte Urbano</h1>
+        <h1 class="text-2xl font-extrabold text-[#1db954]">Barbershop</h1>
         <nav class="hidden md:flex gap-8 text-[#b3b3b3] font-medium">
             <a href="#servicios" class="hover:text-[#1db954]">Servicios</a>
             <a href="#testimonios" class="hover:text-[#1db954]">Testimonios</a>
@@ -70,7 +70,7 @@
     <!-- Hero -->
     <section class="text-center px-6 mt-24 mb-20 fade-in fade-in-delay-1">
         <h2 class="text-5xl md:text-6xl font-extrabold leading-tight tracking-tight mb-6">
-            Transforma tu estilo en <span class="text-[#1db954]">Corte Urbano</span>
+            Transforma tu estilo en <span class="text-[#1db954]">Barbershop</span>
         </h2>
         <p class="text-lg md:text-xl text-[#b3b3b3] max-w-2xl mx-auto mb-8">
             Vive la experiencia de una peluquería moderna con actitud urbana, cortes únicos y estilo auténtico.
@@ -154,7 +154,7 @@
     <!-- CTA / Contacto -->
     <section id="contacto" class="text-center max-w-xl mx-auto px-6 mb-24 fade-in fade-in-delay-3">
         <h2 class="text-2xl font-bold mb-4">¿Listo para tu nuevo look?</h2>
-        <p class="text-[#b3b3b3] mb-6">Reserva tu cita hoy mismo o contáctanos por redes. ¡Te esperamos en Corte Urbano!
+        <p class="text-[#b3b3b3] mb-6">Reserva tu cita hoy mismo o contáctanos por redes. ¡Te esperamos en Barbershop!
         </p>
         <a href="login"
             class="px-8 py-3 bg-[#1db954] text-black rounded-full font-bold hover:bg-[#1ed760] transition">Reservar
@@ -168,7 +168,7 @@
 
     <!-- Footer -->
     <footer class="text-center py-6 text-[#6a6a6a] border-t border-[#2a2a2a] text-sm bg-[#121212]">
-        &copy; 2025 Corte Urbano. Todos los derechos reservados.
+        &copy; 2025 Barbershop. Todos los derechos reservados.
     </footer>
 </body>
 

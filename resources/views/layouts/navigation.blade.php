@@ -6,8 +6,8 @@
                 <!-- Logo Spotify Style -->
                 <div class="shrink-0 flex items-center">
                     <span class="flex items-center gap-2">
-                        <i class="fab fa-spotify text-2xl text-[#1db954]"></i>
-                        <span class="text-xl font-extrabold text-[#1db954] tracking-tight">Corte Urbano</span>
+                        <x-application-logo class="w-8 h-8 text-[#1db954]" />
+                        <span class="text-xl font-extrabold text-[#1db954] tracking-tight">Barbershop</span>
                     </span>
                 </div>
                 <!-- Navigation Links -->

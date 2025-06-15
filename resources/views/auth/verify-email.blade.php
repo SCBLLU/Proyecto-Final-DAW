@@ -4,7 +4,7 @@
         <div
             class="w-full max-w-md bg-[#181818] border border-[#1db954]/20 rounded-2xl shadow-2xl p-10 relative overflow-hidden animate-fade-in">
             <div class="flex justify-center mb-6">
-                <i class="fab fa-spotify text-4xl text-[#1db954]"></i>
+                <x-application-logo class="w-8 h-8 text-[#1db954]" />
             </div>
             <h2 class="text-2xl font-extrabold text-[#1db954] mb-8 text-center tracking-tight">Verifica tu correo
                 electrónico</h2>

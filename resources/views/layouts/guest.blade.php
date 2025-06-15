@@ -26,7 +26,7 @@
 <body class="bg-[#121212] text-white font-sans antialiased min-h-screen">
     <header
         class="flex justify-between items-center px-6 py-5 border-b border-[#2a2a2a] bg-[#121212] sticky top-0 z-50">
-        <h1 class="text-2xl font-extrabold text-[#1db954]">Corte Urbano</h1>
+        <h1 class="text-2xl font-extrabold text-[#1db954]">Barbershop</h1>
         <a href="/"
             class="ml-4 px-5 py-2 bg-white text-black rounded-full font-semibold hover:bg-[#1db954] hover:text-white transition-colors">Inicio</a>
     </header>
